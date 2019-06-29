@@ -1,0 +1,32 @@
+{
+  "name": "full-stack-react-app-tutorial",
+  "version": "1.0.0",
+  "description": "Full stack React app tutorial.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRiSTiaNrsz/full-stack-react-app-tutorial.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "CRiSTiaNrsz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CRiSTiaNrsz/full-stack-react-app-tutorial/issues"
+  },
+  "homepage": "https://github.com/CRiSTiaNrsz/full-stack-react-app-tutorial#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "currently": "0.0.8",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "pg": "^7.11.0"
+  }
+}
