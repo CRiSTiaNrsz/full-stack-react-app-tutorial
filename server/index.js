@@ -5,7 +5,7 @@ const bodyParser = require('body-parser'); //interpretacion de datos por https v
 var db= require('./database');
 
 const ENV=process.env.NODE_ENV;
-const PORT=process.env.PORT || 5000; //numerode puerto que el server express escucha
+const PORT=process.env.PORT || 8000; //numerode puerto que el server express escucha
 
 const app=express();
 app.use(express.json());
@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 db.query('SELECT NOW()', (err, res) => {
     if (err.error)
       return console.log(err.error);
-    console.log(`PostgreSQL connected: ${res[0].now}.`);
+    console.log(`PostgreSQL connected: ${res[0].now}.3`);//now termina muestra la hora ( opcional )
 });
 
 module.exports = app;

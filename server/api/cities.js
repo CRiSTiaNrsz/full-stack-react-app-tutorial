@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   Cities.retrieveAll((err, cities) => {
     if (err)
       return res.json(err);
-    return res.json(cities);
+    return res.json(cities);// retorname los cities de models
   });
 });
 

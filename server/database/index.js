@@ -1,51 +1,46 @@
-var { Pool } = require ('pg');
+var { Pool } = require('pg');
 
-const CONNECTION_STRING = process.env.DATABASE_URL || 'postgres://cristian:rasmuszas@localhost:5432/weather-db';
+const CONNECTION_STRING = process.env.DATABASE_URL || 'postgres://modulo4:modulo4@67.205.143.180:5432/tcs2';
 const SSL = process.env.NODE_ENV === 'production';
 
-class Database{
 
-    constructor(){
+class Database {
+  constructor () {
+    this._pool = new Pool({
+      connectionString: CONNECTION_STRING,
+      ssl: SSL
+    });
 
-        this._pool = new Pool({
-            connectionString: CONNECTION_STRING,
-            ssl: SSL
-          });
-      
-          this._pool.on('error', (err, client) => {
-            console.error('Unexpected error on idle PostgreSQL client.', err);
-            process.exit(-1);
+    this._pool.on('error', (err, client) => {
+      console.error('Unexpected error on idle PostgreSQL client.', err);
+      process.exit(-1);
+    });
+
+  }
+
+  query (query, ...args) {
+    this._pool.connect((err, client, done) => {
+      if (err) throw err;
+      const params = args.length === 2 ? args[0] : [];
+      const callback = args.length === 1 ? args[0] : args[1];
+
+      client.query(query, params, (err, res) => {
+        done();
+        if (err) {
+          console.log(err.stack);
+          return callback({ error: 'Database error.322' }, null);
+        }
+        console.log('322');
+        callback({}, res.rows);
+        console.log('gaaa');
       });
+    });
 
-    }
+  }
 
-    query(query, ...args){
-
-        this._pool.connect((err, client, done) => {
-            if (err) throw err;
-            const params = args.length === 2 ? args[0] : [];
-            const callback = args.length === 1 ? args[0] : args[1];
-      
-            client.query(query, params, (err, res) => {
-              done();
-              if (err) {
-                console.log(err.stack);
-                return callback({ error: 'Database error.' }, null);
-              }
-              callback({}, res.rows);
-            });
-      });
-
-
-    }
-
-
-    end(){
-        this._pool.end();
-    }
-
-
-
+  end () {
+    this._pool.end();
+  }
 }
 
 module.exports = new Database();
