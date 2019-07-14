@@ -5,7 +5,7 @@ const bodyParser = require('body-parser'); //interpretacion de datos por https v
 var db= require('./database');
 
 const ENV=process.env.NODE_ENV;
-const PORT=process.env.PORT || 8000; //numerode puerto que el server express escucha
+const PORT=process.env.PORT || 5000; //numerode puerto que el server express escucha
 
 const app=express();
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use('/api/cities', require('./api/cities'));
 
 app.listen(PORT, () => {
-    console.log(`Server listening on port gaa ${PORT}!`);
+    console.log(`Server listening on port ${PORT}!`);
 });
 
 

@@ -30,9 +30,9 @@ class Database {
           console.log(err.stack);
           return callback({ error: 'Database error.322' }, null);
         }
-        console.log('322');
+       
         callback({}, res.rows);
-        console.log('gaaa');
+        
       });
     });
 
