@@ -2,9 +2,9 @@ const db = require('../database');
 
 class Cities {
   static retrieveAll (callback) {//get
-    //db.query('SELECT tegreso_desc from tipo_egreso', (err, res) => {
+    db.query('SELECT * from presupuesto', (err, res) => {
     //db.query('SELECT tunidad_desc from tipo_unidad', (err, res) => {
-      db.query('SELECT tipotelefono_desc from tipo_telefono', (err, res) => {
+     // db.query('SELECT tipotelefono_desc from tipo_telefono', (err, res) => {
       if (err.error)
         return callback(err);
       callback(res);
